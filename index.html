@@ -34,11 +34,13 @@
       }
 
       function getBMICategory(bmi) {
-        /*if (bmi < 18.5) return "Nepietiekams svars";
+        if (bmi < 18.5) return "Nepietiekams svars";
         if (bmi >= 18.5 || bmi <= 24.9) return "Normāls svars";
         if (bmi >= 25 || bmi <= 29.9) return "Liekais svars";
-        return "Aptaukošanās";*/
-        switch (bmi) {
+        else {
+          return "Aptaukošanās";
+        }
+        /*switch (bmi) {
           case bmi < 18.5:
             return "Nepietiekams svars";
           case bmi >= 18.5 || bmi <= 24.9:
@@ -46,8 +48,7 @@
           case bmi >= 25 || bmi <= 29.9:
             return "Liekais svars";
           case bmi > 29.9:
-            return "Aptaukošanās";
-        }
+            return "Aptaukošanās";*/
       }
 
       calculateBtn.addEventListener("click", () => {
