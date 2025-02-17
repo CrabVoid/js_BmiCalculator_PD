@@ -42,7 +42,7 @@
         }
       }
 
-      calculateBtn.addEventListener("click", () => {
+      function processInput() {
         const height = parseFloat(heightInput.value);
         const weight = parseFloat(weightInput.value);
 
@@ -62,11 +62,13 @@
             displayHistory();
           }
         }
-      });
+      }
 
       function displayHistory() {
         history.innerHTML = historyArray.join("<br>");
       }
+
+      calculateBtn.addEventListener("click", processInput);
     </script>
   </body>
 </html>
