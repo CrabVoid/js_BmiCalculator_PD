@@ -17,12 +17,17 @@
     />
     <button id="calculateBtn">Aprēķināt ĶMI</button>
     <p id="result"></p>
+    <br />
+    <p id="history"></p>
 
     <script>
       const heightInput = document.getElementById("heightInput");
       const weightInput = document.getElementById("weightInput");
       const calculateBtn = document.getElementById("calculateBtn");
       const result = document.getElementById("result");
+      const history = document.getElementById("history");
+
+      let historyArray = [];
 
       function calculateBMI(height, weight) {
         return (weight / height).toFixed(2);
@@ -61,8 +66,15 @@
 
         let category = getBMICategory(bmi);
 
-        result.innerHTML = `Jūsu ĶMI ir ${bmi}, kas atbilst kategorijai: ${category}.`;
+        resultText = `Jūsu ĶMI ir ${bmi}, kas atbilst kategorijai: ${category}.`;
+        result.innerHTML = resultText;
+        historyArray.push(resultText);
+        displayHistory();
       });
+
+      function displayHistory() {
+        history.innerHTML = historyArray.join("<br>");
+      }
     </script>
   </body>
 </html>
