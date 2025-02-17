@@ -33,20 +33,29 @@
         const height = parseFloat(heightInput.value);
         const weight = parseFloat(weightInput.value);
 
-        const inputs = [height, weight];
+        trueOrFalse = codeValidation(height, weight);
+        if (trueOrFalse == false) {
+          result.innerHTML =
+            "Lūdzu ievadiet derīgus pozitīvus skaitļus augumam un svaram.";
+        } else {
+          const bmi = calculateBMI(height, weight);
+
+          let category = getBMICategory(bmi);
+
+          resultText = `Jūsu ĶMI ir ${bmi}, kas atbilst kategorijai: ${category}.`;
+          result.innerHTML = resultText;
+          historyArray.push(resultText);
+          displayHistory();
+        }
+      }
+
+      function codeValidation(h, w) {
+        const inputs = [h, w];
         for (const input of inputs) {
           if (isNaN(input) || input <= 0) {
-            result.innerHTML =
-              "Lūdzu ievadiet derīgus pozitīvus skaitļus augumam un svaram.";
+            return false;
           } else {
-            const bmi = calculateBMI(height, weight);
-
-            let category = getBMICategory(bmi);
-
-            resultText = `Jūsu ĶMI ir ${bmi}, kas atbilst kategorijai: ${category}.`;
-            result.innerHTML = resultText;
-            historyArray.push(resultText);
-            displayHistory();
+            return true;
           }
         }
       }
