@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>ĶMI Kalkulators</h1>
+    <label for="heightInput">Augums (metros):</label>
+    <input type="number" id="heightInput" placeholder="Ievadi augumu metros" />
+    <label for="weightInput">Svars (kilogramos):</label>
+    <input
+      type="number"
+      id="weightInput"
+      placeholder="Ievadi svaru kilogramos"
+    />
+    <button id="calculateBtn">Aprēķināt ĶMI</button>
+    <p id="result"></p>
+
+    <script>
+      const heightInput = document.getElementById("heightInput");
+      const weightInput = document.getElementById("weightInput");
+      const calculateBtn = document.getElementById("calculateBtn");
+      const result = document.getElementById("result");
+
+      function calculateBMI(height, weight) {
+        return (weight / height).toFixed(2);
+      }
+
+      function getBMICategory(bmi) {
+        /*if (bmi < 18.5) return "Nepietiekams svars";
+        if (bmi >= 18.5 || bmi <= 24.9) return "Normāls svars";
+        if (bmi >= 25 || bmi <= 29.9) return "Liekais svars";
+        return "Aptaukošanās";*/
+        switch (bmi) {
+          case bmi < 18.5:
+            return "Nepietiekams svars";
+          case bmi >= 18.5 || bmi <= 24.9:
+            return "Normāls svars";
+          case bmi >= 25 || bmi <= 29.9:
+            return "Liekais svars";
+          case bmi > 29.9:
+            return "Aptaukošanās";
+        }
+      }
+
+      calculateBtn.addEventListener("click", () => {
+        const height = parseFloat(heightInput.value);
+        const weight = parseFloat(weightInput.value);
+
+        const inputs = [height, weight];
+        for (const input of inputs) {
+          if (isNaN(input) || input <= 0) {
+            result.innerHTML =
+              "Lūdzu ievadiet derīgus pozitīvus skaitļus augumam un svaram.";
+          }
+        }
+
+        const bmi = calculateBMI(height, weight);
+
+        let category = getBMICategory(bmi);
+
+        result.innerHTML = `Jūsu ĶMI ir ${bmi}, kas atbilst kategorijai: ${category}.`;
+      });
+    </script>
+  </body>
+</html>
