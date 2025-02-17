@@ -29,19 +29,6 @@
 
       let historyArray = [];
 
-      function calculateBMI(height, weight) {
-        return (weight / (height * height)).toFixed(2);
-      }
-
-      function getBMICategory(bmi) {
-        if (bmi < 18.5) return "Nepietiekams svars";
-        if (bmi >= 18.5 || bmi <= 24.9) return "Normāls svars";
-        if (bmi >= 25 || bmi <= 29.9) return "Liekais svars";
-        else {
-          return "Aptaukošanās";
-        }
-      }
-
       function processInput() {
         const height = parseFloat(heightInput.value);
         const weight = parseFloat(weightInput.value);
@@ -61,6 +48,19 @@
             historyArray.push(resultText);
             displayHistory();
           }
+        }
+      }
+
+      function calculateBMI(height, weight) {
+        return (weight / (height * height)).toFixed(2);
+      }
+
+      function getBMICategory(bmi) {
+        if (bmi < 18.5) return "Nepietiekams svars";
+        if (bmi >= 18.5 || bmi <= 24.9) return "Normāls svars";
+        if (bmi >= 25 || bmi <= 29.9) return "Liekais svars";
+        else {
+          return "Aptaukošanās";
         }
       }
 
